@@ -67,6 +67,17 @@ grails:
         defaultScope: singleton
     converters:
         encoding: UTF-8
+    cassandra:
+        contactPoints: localhost
+        port: 9042
+        dbCreate: recreate-drop-unused
+        keyspace:
+            name: foo2 #the name of the keyspace to use, default: the name of the application
+            action: create #whether to create a keyspace, default: no keyspace created
+            # keyspace properties to set only if the plugin is to create the keyspace
+            durableWrites: true #default: false
+            replicationStrategy: SIMPLE_STRATEGY # OR  NETWORK_TOPOLOGY_STRATEGY default: "SIMPLE_STRATEGY"
+            replicationFactor: 1 #default: 1
 
 ---
 grails:
@@ -118,3 +129,4 @@ environments:
                 testOnReturn: false
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+
