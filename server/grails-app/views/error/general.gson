@@ -1,0 +1,21 @@
+import dk.flug.error.GeneralError
+
+model {
+    GeneralError error
+}
+
+response.status error.getStatus()
+
+json {
+    def resourcePath = g.link(resource:request.uri, absolute:false)
+    def resourceLink = g.link(resource:request.uri, absolute:true)
+
+    error error.getStatus().toString()
+    message error.getMessage()
+    path resourcePath
+    _links {
+        self {
+            href resourceLink
+        }
+    }
+}

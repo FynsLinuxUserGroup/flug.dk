@@ -10,6 +10,10 @@ class User {
     String firstname
     String lastname
 
+    static mapping = {
+        stateless true
+    }
+
     static constraints = {
     }
 }
